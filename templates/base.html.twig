@@ -1,19 +1,67 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
-        {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
-        {% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %} - BedShop</title>
+    {# Run `composer require symfony/webpack-encore-bundle`
+       and uncomment the following Encore helpers to start using Symfony UX #}
+    {% block stylesheets %}
+        {#{{ encore_entry_link_tags('app') }}#}
+    {% endblock %}
+    <style>
+        h1 {
+            background-color: blue;
+        }
 
-        {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+        p {
+            color: green;
+        }
+    </style>
+
+    <script src="https://kit.fontawesome.com/880d84603a.js" crossorigin="anonymous"></script>
+
+
+    {#        <script src="code.jquery.com/jquery-1.11.1.min.js"></script>#}
+    {#        <link rel="stylesheet" href="code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />#}
+    {#        <script src="code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>#}
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+
+    {% block javascripts %}
+        {#{{ encore_entry_script_tags('app') }}#}
+    {% endblock %}
+</head>
+<body>
+<nav>
+    <ul>
+        <li>
+            <a href="{{ url("home") }}">
+                home
+            </a>
+        </li>
+        <li>
+            <a href="{{ url('timer', {'n': 30}) }}">
+                Short study - 30 minutes
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ url('timer', {'n': 60}) }}">
+                Medium study - 60 minutes
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ url('timer', {'n': 120}) }}">
+                Long study - 120 minutes
+            </a>
+        </li>
+
+
+    </ul>
+</nav>
+<hr>
+
+{% block body %}{% endblock %}
+</body>
 </html>

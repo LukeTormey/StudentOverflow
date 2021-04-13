@@ -9,12 +9,38 @@ use Symfony\Component\Routing\Annotation\Route;
 class DefaultController extends AbstractController
 {
     /**
-     * @Route("/", name="default")
-     */
+ * @Route("/", name="home")
+ */
     public function index(): Response
     {
         $template = 'default/index.html.twig';
         $args = [];
+        return $this->render($template, $args);
+    }
+
+    /**
+     * @Route("/timer", name="timer_default")
+     */
+    public function timerDefault(): Response
+    {
+        // default 10 mins
+        $n = 10;
+        $template = 'default/timer.html.twig';
+        $args = [
+            'timerDuration' => $n
+        ];
+        return $this->render($template, $args);
+    }
+
+    /**
+     * @Route("/timer/{n}", name="timer")
+     */
+    public function timer($n): Response
+    {
+        $template = 'default/timer.html.twig';
+        $args = [
+            'timerDuration' => $n
+        ];
         return $this->render($template, $args);
     }
 }
