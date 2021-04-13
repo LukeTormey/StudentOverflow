@@ -43,4 +43,44 @@ class DefaultController extends AbstractController
         ];
         return $this->render($template, $args);
     }
+
+    /**
+     * @Route("/study", name="study")
+     */
+    public function study(): Response
+    {
+        $template = 'default/study.html.twig';
+        $args = [];
+        return $this->render($template, $args);
+    }
+
+    /**
+     * @Route("/subject", name="subject")
+     */
+    public function subject(): Response
+    {
+        $template = 'default/subject.html.twig';
+        $args = [];
+        return $this->render($template, $args);
+    }
+
+    /**
+     * @Route("/calender", name="calender")
+     */
+    public function calender(): Response
+    {
+        $template = 'default/calender.html.twig';
+        $args = [];
+        return $this->render($template, $args);
+    }
+
+    /**
+     * @Route("/trophies", name="trophies")
+     */
+    public function trophies(): Response
+    {
+        $template = 'default/trophies.html.twig';
+        $args = [];
+        return $this->render($template, $args);
+    }
 }
