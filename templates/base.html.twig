@@ -2,12 +2,17 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Welcome!{% endblock %} - BedShop</title>
+    <title>{% block title %}Welcome!{% endblock %}</title>
     {# Run `composer require symfony/webpack-encore-bundle`
        and uncomment the following Encore helpers to start using Symfony UX #}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     {% block stylesheets %}
         {#{{ encore_entry_link_tags('app') }}#}
     {% endblock %}
+    <script src="https://kit.fontawesome.com/880d84603a.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <style>
         h1 {
             background-color: blue;
@@ -16,9 +21,15 @@
         p {
             color: green;
         }
+        .navigationbar {
+            background-color: lightseagreen;
+        }
+        #applogo{
+            width: 27%;
+            height: 65px;
+            border: 2px solid #070c0a;
+        }
     </style>
-
-    <script src="https://kit.fontawesome.com/880d84603a.js" crossorigin="anonymous"></script>
 
 
     {#        <script src="code.jquery.com/jquery-1.11.1.min.js"></script>#}
@@ -32,35 +43,46 @@
     {% endblock %}
 </head>
 <body>
-<nav>
-    <ul>
-        <li>
-            <a href="{{ url("home") }}">
-                home
+<div class ="navigationbar">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-bg mb-5">
+        <a style="margin-left: 0.1rem;" class="navbar-brand space-brand" href="/">
+            Student Overflow
+        </a>
+        <div class="header">
+            <a href="{{ path('home') }}"><img src="/images/logo.png" id="applogo" alt="homepage"></a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+            <a class="nav-link" href="{{ url("home") }}">
+                Home
             </a>
-        </li>
-        <li>
-            <a href="{{ url('timer', {'n': 30}) }}">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('timer', {'n': 30}) }}">
                 Short study - 30 minutes
             </a>
         </li>
 
-        <li>
-            <a href="{{ url('timer', {'n': 60}) }}">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('timer', {'n': 60}) }}">
                 Medium study - 60 minutes
             </a>
         </li>
 
-        <li>
-            <a href="{{ url('timer', {'n': 120}) }}">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('timer', {'n': 120}) }}">
                 Long study - 120 minutes
             </a>
-        </li>
-
-
-    </ul>
+                </li>
+            </ul>
+        </div>
 </nav>
-<hr>
+</div>
 
 {% block body %}{% endblock %}
 </body>
