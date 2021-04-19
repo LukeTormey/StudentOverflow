@@ -3,14 +3,25 @@
 {% block title %}privacy{% endblock %}
 
 {% block body %}
+<style>
+    h2 {
+        text-align: center;
+    }
+    body {
+        background-color: lightsalmon;
+    }
+    .timer {
+        background-color: lightseagreen;
+    }
+</style>
+
+
+    <h2>Complete a study to get your rewards! ⭐</h2>
 
 
 
-    <h1>timer </h1>
-
-
-
-    <div role="main" div style="text-align: center; background: ghostwhite; font-size: 20px; padding: 10px; border: 1px solid lightgray; margin: 10px;" class="ui-content">
+    <div role="main" div style="text-align: center; background-color: lightgreen; font-size: 20px; padding: 10px; border: 1px solid black; margin: 10px;" class="ui-content">
+        <img src="/images/timer.png" id="timer" alt="timer"></a>
         <h2 div style="font-family: Arial, Helvetica, sans-serif; font-size: 34px; font-variant: small-caps; text-transform: capitalize;">Study Timer
             <p id="timerDisplay"></p></h2>
     </div>
@@ -41,7 +52,6 @@
                     alert("Gold trophy received.");
                 }
             }, 1000);
-
     });
     </script>
 

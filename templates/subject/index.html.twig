@@ -3,21 +3,49 @@
 {% block title %}Subject index{% endblock %}
 
 {% block body %}
-    <h1>Subject index</h1>
+    <style>
+        h1 {
+            text-align: center;
+        }
+        p {
+            text-align: center;
+        }
+        body {
+            background-color: lightcyan;
+        }
+    table, th, td {
+    border: 1px solid black;
+    text-align: center;
+    }
+    table {
+    width: 100%;
+    border-collapse: collapse;
+    }
+    tr:nth-child(odd) {background-color: lightseagreen;}
+    tr:nth-child(even) {background-color: lightgray;}
+    th {
+    height: 50px;
+    background-color: black;
+    color: white;
+    }
+    </style>
+    <h1>Subjects</h1>
+    <p>Please use this page to enter and manage your subjects.✍ <br> We ask that you input a difficulty of the subjects so
+    you get the most personalized experience yet and receive full rewards for your study sessions! ✔</p>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Name</th>
+                <th>Difficulty</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for subject in subjects %}
             <tr>
-                <td>{{ subject.id }}</td>
                 <td>{{ subject.name }}</td>
+                <td>{{ subject.difficulty }}</td>
                 <td>
                     <a href="{{ path('subject_show', {'id': subject.id}) }}">show</a>
                     <a href="{{ path('subject_edit', {'id': subject.id}) }}">edit</a>
