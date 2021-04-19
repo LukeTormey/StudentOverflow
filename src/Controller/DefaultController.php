@@ -55,16 +55,6 @@ class DefaultController extends AbstractController
     }
 
     /**
-     * @Route("/subject", name="subject")
-     */
-    public function subject(): Response
-    {
-        $template = 'default/subject.html.twig';
-        $args = [];
-        return $this->render($template, $args);
-    }
-
-    /**
      * @Route("/calender", name="calender")
      */
     public function calender(): Response

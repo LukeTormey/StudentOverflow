@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Trophy index{% endblock %}
+
+{% block body %}
+    <h1>Trophy index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Color</th>
+                <th>Points</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for trophy in trophies %}
+            <tr>
+                <td>{{ trophy.id }}</td>
+                <td>{{ trophy.color }}</td>
+                <td>{{ trophy.points }}</td>
+                <td>
+                    <a href="{{ path('trophy_show', {'id': trophy.id}) }}">show</a>
+                    <a href="{{ path('trophy_edit', {'id': trophy.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('trophy_new') }}">Create new</a>
+{% endblock %}
