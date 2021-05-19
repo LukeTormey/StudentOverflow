@@ -2,10 +2,16 @@
 
 namespace App\Controller;
 
+use App\Repository\StudyLengthRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\SubjectRepository;
+use App\Entity\Subject;
 
+/**
+ * @Route("/", name="home_")
+ */
 class DefaultController extends AbstractController
 {
     /**
@@ -33,24 +39,39 @@ class DefaultController extends AbstractController
     }
 
     /**
-     * @Route("/timer/{n}", name="timer")
+     * @Route("/timer/{n}/{id}", name="timer")
      */
-    public function timer($n): Response
+    public function timer($n, Subject $subject): Response
     {
         $template = 'default/timer.html.twig';
         $args = [
-            'timerDuration' => $n
+            'timerDuration' => $n,
+            'subject' => $subject
         ];
         return $this->render($template, $args);
     }
 
     /**
+     * @Route("/create_trophy/{id}", name="create_trophy")
+     */
+    public function addTrophy(Subject $subject): Response
+    {
+        //create instance of Trophy2.php
+        $user = $this->getUser();
+
+
+        //redirect to trophy 
+    }
+
+    /**
      * @Route("/study", name="study")
      */
-    public function study(): Response
+    public function study(SubjectRepository $subjectRepository): Response
     {
         $template = 'default/study.html.twig';
-        $args = [];
+        $args = [
+            'subjects' => $subjectRepository->findAll()
+        ];
         return $this->render($template, $args);
     }
 
@@ -65,11 +86,31 @@ class DefaultController extends AbstractController
     }
 
     /**
-     * @Route("/trophies", name="trophies")
+     * @Route("/shortStudy", name="shortStudy")
      */
-    public function trophies(): Response
+    public function shortStudy(): Response
     {
-        $template = 'default/trophies.html.twig';
+        $template = 'default/shortStudy.html.twig';
+        $args = [];
+        return $this->render($template, $args);
+    }
+
+    /**
+     * @Route("/mediumStudy", name="mediumStudy")
+     */
+    public function mediumStudy(): Response
+    {
+        $template = 'default/mediumStudy.html.twig';
+        $args = [];
+        return $this->render($template, $args);
+    }
+
+    /**
+     * @Route("/hardStudy", name="hardStudy")
+     */
+    public function longStudy(): Response
+    {
+        $template = 'default/hardStudy.html.twig';
         $args = [];
         return $this->render($template, $args);
     }

@@ -1,67 +1,54 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}privacy{% endblock %}
+{% block title %}Home Page{% endblock %}
 
 {% block body %}
-<style>
-    h2 {
-        text-align: center;
-    }
-    body {
-        background-color: lightsalmon;
-    }
-    .timer {
-        background-color: lightseagreen;
+    <style>
+        h2 {
+            text-align: center;
+        }
+        body {
+            background-color: lightsalmon;
+        }
+        .timer {
+            background-color: lightseagreen;
 
-    }
-    #Button {
-        display: none;
-    }
-</style>
-
-
-    <h2>Complete a study to get your rewards! ⭐</h2>
-
-
-
+        }
+        #Button {
+            display: none;
+        }
+    </style>
     <div role="main" div style="text-align: center; background-color: lightgreen; font-size: 20px; padding: 10px; border: 1px solid black; margin: 10px;" class="ui-content">
         <img src="/images/timer.png" id="timer" alt="timer"></a>
         <h2 div style="font-family: Arial, Helvetica, sans-serif; font-size: 34px; font-variant: small-caps; text-transform: capitalize;">Study Timer
-            <p id="timerDisplay"></p></h2>
-        <div id="myDiv">
-            <a href="{{ path('home') }}">Click me to claim your trophy!</a>
-        </div>
+            <button id="MediumStudy" class="btn btn-primary btn-lg btn-block">Begin medium study</button>
+            <p id="timerDisplayMedium"></p>
     </div>
 
     <script>
-
-    // $(document).ready(function(){
-    jQuery(document).ready(function()
-    {
+        $("#MediumStudy").click(function(e) {
             console.log("clicked");
-            var timerDuration = {{ timerDuration }};
+            var timerDuration = 60;
             var startTime = new Date();
             var endTime = new Date();
             endTime.setMinutes(startTime.getMinutes() + timerDuration);
-            //sets the minutes of variable v to 30 minutes
+            //sets the minutes of variable v to 60 minutes
             //check alerts
-            var interval = setInterval(function()
+            var x = setInterval(function()
             {
                 var now = new Date();
                 var timeRemaining = endTime - now;
                 var hours = Math.floor(( timeRemaining % (1000 * 60 * 60 * 24))/(1000 * 60 * 60));
                 var minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
                 var seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
-                document.getElementById("timerDisplay").innerHTML = hours + "h " + minutes + "m " + seconds + "s ";
+                document.getElementById("timerDisplayMedium").innerHTML = hours + "h " + minutes + "m " + seconds + "s ";
                 if (timeRemaining < 0) {
-                    clearInterval(interval);
-                    document.getElementById("timerDisplay").innerHTML = "CONGRATULATIONS! FINISHED LONG STUDY";
-                    var myDiv = document.getElementById("myDIV");
-                    myDiv.style.display = "block";
+                    clearInterval(x);
+                    document.getElementById("timerDisplayMedium").innerHTML = "CONGRATULATIONS! FINISHED MEDIUM STUDY";
+                    var x = document.getElementById("myDIV");
+                    x.style.display = "block";
                 }
             }, 1000);
-    });
+        });
     </script>
-
-
 {% endblock %}

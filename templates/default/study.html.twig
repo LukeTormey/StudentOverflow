@@ -18,98 +18,33 @@
             display: none;
         }
     </style>
-
     <div role="main" div style="text-align: center; background-color: lightgreen; font-size: 20px; padding: 10px; border: 1px solid black; margin: 10px;" class="ui-content">
         <img src="/images/timer.png" id="timer" alt="timer"></a>
         <h2 div style="font-family: Arial, Helvetica, sans-serif; font-size: 34px; font-variant: small-caps; text-transform: capitalize;">Study Timer
-            <button id="ShortStudy" class="btn btn-primary btn-lg btn-block">Begin short study</button>
-            <p id="timerDisplay"></p></h2>
+            <button id="ShortStudy" class="btn btn-primary btn-lg btn-block">Short study</button>
+            <p id="timerDisplay"></p>
             <br>
-            <button id="MediumStudy" class="btn btn-primary btn-lg btn-block">Begin medium study</button>
-            <p id="timerDisplayMedium"></p></h2>
+            <button id="MediumStudy" class="btn btn-primary btn-lg btn-block">Medium study</button>
+            <p id="timerDisplayMedium"></p>
             <br>
-            <button id="HardStudy" class="btn btn-primary btn-lg btn-block">Begin hard study</button>
-            <p id="timerDisplayHard"></p></h2>
+            <button id="HardStudy" class="btn btn-primary btn-lg btn-block">Hard study</button>
+            <p id="timerDisplayHard"></p>
     </div>
 
-    <script>
+   <script>
+       $("#ShortStudy").click(function(e) {
+           console.log("clicked");
+           window.location="/shortStudy";
+       });
 
-        // $(document).ready(function(){
-        $("#ShortStudy").click(function(e) {
-            console.log("clicked");
-            var timerDuration = 30;
-            var startTime = new Date();
-            var endTime = new Date();
-            endTime.setMinutes(startTime.getMinutes() + timerDuration);
-            //sets the minutes of variable v to 30 minutes
-            //check alerts
-            var x = setInterval(function()
-            {
-                var now = new Date();
-                var timeRemaining = endTime - now;
-                var hours = Math.floor(( timeRemaining % (1000 * 60 * 60 * 24))/(1000 * 60 * 60));
-                var minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
-                var seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
-                document.getElementById("timerDisplay").innerHTML = hours + "h " + minutes + "m " + seconds + "s ";
-                if (timeRemaining < 0) {
-                    clearInterval(x);
-                    document.getElementById("timerDisplay").innerHTML = "CONGRATULATIONS! FINISHED LONG STUDY";
-                    var x = document.getElementById("myDIV");
-                    x.style.display = "block";
-                }
-            }, 1000);
-        });
+       $("#MediumStudy").click(function(e) {
+           console.log("clicked");
+           window.location="/mediumStudy";
+       });
 
-        // $(document).ready(function(){
-        $("#MediumStudy").click(function(e) {
-            console.log("clicked");
-            var timerDuration = 60;
-            var startTime = new Date();
-            var endTime = new Date();
-            endTime.setMinutes(startTime.getMinutes() + timerDuration);
-            //sets the minutes of variable v to 60 minutes
-            //check alerts
-            var x = setInterval(function()
-            {
-                var now = new Date();
-                var timeRemaining = endTime - now;
-                var hours = Math.floor(( timeRemaining % (1000 * 60 * 60 * 24))/(1000 * 60 * 60));
-                var minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
-                var seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
-                document.getElementById("timerDisplayMedium").innerHTML = hours + "h " + minutes + "m " + seconds + "s ";
-                if (timeRemaining < 0) {
-                    clearInterval(x);
-                    document.getElementById("timerDisplayMedium").innerHTML = "CONGRATULATIONS! FINISHED LONG STUDY";
-                    var x = document.getElementById("myDIV");
-                    x.style.display = "block";
-                }
-            }, 1000);
-        });
-
-        // $(document).ready(function(){
         $("#HardStudy").click(function(e) {
             console.log("clicked");
-            var timerDuration = 120;
-            var startTime = new Date();
-            var endTime = new Date();
-            endTime.setMinutes(startTime.getMinutes() + timerDuration);
-            //sets the minutes of variable v to 60 minutes
-            //check alerts
-            var x = setInterval(function()
-            {
-                var now = new Date();
-                var timeRemaining = endTime - now;
-                var hours = Math.floor(( timeRemaining % (1000 * 60 * 60 * 24))/(1000 * 60 * 60));
-                var minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
-                var seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
-                document.getElementById("timerDisplayHard").innerHTML = hours + "h " + minutes + "m " + seconds + "s ";
-                if (timeRemaining < 0) {
-                    clearInterval(x);
-                    document.getElementById("timerDisplayHard").innerHTML = "CONGRATULATIONS! FINISHED LONG STUDY";
-                    var x = document.getElementById("myDIV");
-                    x.style.display = "block";
-                }
-            }, 1000);
+            window.location="/hardStudy";
         });
-    </script>
+   </script>
 {% endblock %}
