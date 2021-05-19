@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit GoldTrophy{% endblock %}
+
+{% block body %}
+    <h1>Edit GoldTrophy</h1>
+
+    {{ include('gold_trophy/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('gold_trophy_index') }}">back to list</a>
+
+    {{ include('gold_trophy/_delete_form.html.twig') }}
+{% endblock %}

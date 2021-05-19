@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+use App\Repository\BronzeTrophyRepository;
+use App\Repository\SilverTrophyRepository;
+use App\Repository\GoldTrophyRepository;
 use App\Repository\StudyLengthRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -82,6 +85,24 @@ class DefaultController extends AbstractController
     {
         $template = 'default/calender.html.twig';
         $args = [];
+        return $this->render($template, $args);
+    }
+
+    /**
+     * @Route("/cabinet", name="cabinet")
+     */
+    public function cabinet(GoldTrophyRepository $goldTrophyRepository, SilverTrophyRepository $silverTrophyRepository, BronzeTrophyRepository $bronzeTrophyRepository): Response
+    {
+        $goldtrophies = $goldTrophyRepository->findAll();
+        $silvertrophies = $silverTrophyRepository->findAll();
+        $bronzetrophies = $bronzeTrophyRepository->findAll();
+
+        $template = 'default/cabinet.html.twig';
+        $args = [
+            'goldtrophies' => $goldtrophies,
+            'silvertrophies' => $silvertrophies,
+            'bronzetrophies' => $bronzetrophies
+        ];
         return $this->render($template, $args);
     }
 

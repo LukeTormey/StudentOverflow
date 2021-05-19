@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Trophy index{% endblock %}
+{% block title %}GoldTrophy index{% endblock %}
 
 {% block body %}
-    <h1>Trophy index</h1>
+    <h1>GoldTrophy index</h1>
 
     <table class="table">
         <thead>
@@ -15,14 +15,14 @@
             </tr>
         </thead>
         <tbody>
-        {% for trophy in trophies %}
+        {% for gold_trophy in gold_trophies %}
             <tr>
-                <td>{{ trophy.id }}</td>
-                <td>{{ trophy.award }}</td>
-                <td>{{ trophy.image }}</td>
+                <td>{{ gold_trophy.id }}</td>
+                <td>{{ gold_trophy.award }}</td>
+                <td>{{ gold_trophy.image }}</td>
                 <td>
-                    <a href="{{ path('trophy_show', {'id': trophy.id}) }}">show</a>
-                    <a href="{{ path('trophy_edit', {'id': trophy.id}) }}">edit</a>
+                    <a href="{{ path('gold_trophy_show', {'id': gold_trophy.id}) }}">show</a>
+                    <a href="{{ path('gold_trophy_edit', {'id': gold_trophy.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -33,5 +33,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('trophy_new') }}">Create new</a>
+    <a href="{{ path('gold_trophy_new') }}">Create new</a>
 {% endblock %}

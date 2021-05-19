@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New BronzeTrophy{% endblock %}
+
+{% block body %}
+    <h1>Create new BronzeTrophy</h1>
+
+    {{ include('bronze_trophy/_form.html.twig') }}
+
+    <a href="{{ path('bronze_trophy_index') }}">back to list</a>
+{% endblock %}

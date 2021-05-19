@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Home Page{% endblock %}
+{% block title %}Hard Study{% endblock %}
 {% block body %}
 <style>
     h2 {
@@ -18,10 +18,13 @@
     }
 </style>
 <div role="main" div style="text-align: center; background-color: lightgreen; font-size: 20px; padding: 10px; border: 1px solid black; margin: 10px;" class="ui-content">
+    <h2>Click the button once the timer has been completed to receive your trophy! ✔</h2>
     <img src="/images/timer.png" id="timer" alt="timer"></a>
     <h2 div style="font-family: Arial, Helvetica, sans-serif; font-size: 34px; font-variant: small-caps; text-transform: capitalize;">Study Timer
         <button id="HardStudy" class="btn btn-primary btn-lg btn-block">Begin hard study</button>
         <p id="timerDisplayHard"></p>
+        <button id="Completion" class="btn btn-primary btn-lg btn-block">Receive reward</button>
+    </h2></div>
     </div>
 
     <script>
@@ -48,6 +51,11 @@
                     x.style.display = "block";
                 }
             }, 1000);
+        });
+
+        $("#Completion").click(function(e) {
+            console.log("clicked");
+            window.location="/shortStudy";
         });
     </script>
 {% endblock %}

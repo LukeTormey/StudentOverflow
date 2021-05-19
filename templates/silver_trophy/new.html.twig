@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New SilverTrophy{% endblock %}
+
+{% block body %}
+    <h1>Create new SilverTrophy</h1>
+
+    {{ include('silver_trophy/_form.html.twig') }}
+
+    <a href="{{ path('silver_trophy_index') }}">back to list</a>
+{% endblock %}

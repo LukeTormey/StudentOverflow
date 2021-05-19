@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit BronzeTrophy{% endblock %}
+
+{% block body %}
+    <h1>Edit BronzeTrophy</h1>
+
+    {{ include('bronze_trophy/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('bronze_trophy_index') }}">back to list</a>
+
+    {{ include('bronze_trophy/_delete_form.html.twig') }}
+{% endblock %}

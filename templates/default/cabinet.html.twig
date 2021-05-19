@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cabinet{% endblock %}
+{% block body %}
+    {% for goldtrophy in goldtrophies %}
+        <div class="cabinet">
+            {{ goldtrophy.award }}
+            {{ goldtrophy.image }}
+        </div>
+    {% endfor %}
+{% endblock %}

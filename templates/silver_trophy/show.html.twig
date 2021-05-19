@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SilverTrophy{% endblock %}
+
+{% block body %}
+    <h1>SilverTrophy</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ silver_trophy.id }}</td>
+            </tr>
+            <tr>
+                <th>Award</th>
+                <td>{{ silver_trophy.award }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ silver_trophy.image }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('silver_trophy_index') }}">back to list</a>
+
+    <a href="{{ path('silver_trophy_edit', {'id': silver_trophy.id}) }}">edit</a>
+
+    {{ include('silver_trophy/_delete_form.html.twig') }}
+{% endblock %}

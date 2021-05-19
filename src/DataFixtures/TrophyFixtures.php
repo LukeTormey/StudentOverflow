@@ -12,13 +12,12 @@ class TrophyFixtures extends Fixture
     {
         $bronze = new Trophy();
         $bronze->setColor('bronze');
-        $bronze->setPoints(100);
+
         $silver = new Trophy();
         $silver->setColor('silver');
-        $silver->setPoints(200);
+
         $gold = new Trophy();
         $gold->setColor('gold');
-        $gold->setPoints(300);
 
         $manager->persist($bronze);
         $manager->persist($silver);

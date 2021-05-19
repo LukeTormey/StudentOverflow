@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SilverTrophy index{% endblock %}
+
+{% block body %}
+    <h1>SilverTrophy index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Award</th>
+                <th>Image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for silver_trophy in silver_trophies %}
+            <tr>
+                <td>{{ silver_trophy.id }}</td>
+                <td>{{ silver_trophy.award }}</td>
+                <td>{{ silver_trophy.image }}</td>
+                <td>
+                    <a href="{{ path('silver_trophy_show', {'id': silver_trophy.id}) }}">show</a>
+                    <a href="{{ path('silver_trophy_edit', {'id': silver_trophy.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('silver_trophy_new') }}">Create new</a>
+{% endblock %}

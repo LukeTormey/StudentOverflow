@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BronzeTrophy{% endblock %}
+
+{% block body %}
+    <h1>BronzeTrophy</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ bronze_trophy.id }}</td>
+            </tr>
+            <tr>
+                <th>Award</th>
+                <td>{{ bronze_trophy.award }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ bronze_trophy.image }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('bronze_trophy_index') }}">back to list</a>
+
+    <a href="{{ path('bronze_trophy_edit', {'id': bronze_trophy.id}) }}">edit</a>
+
+    {{ include('bronze_trophy/_delete_form.html.twig') }}
+{% endblock %}

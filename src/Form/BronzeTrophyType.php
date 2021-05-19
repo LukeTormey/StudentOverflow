@@ -2,25 +2,26 @@
 
 namespace App\Form;
 
-use App\Entity\Trophy;
+use App\Entity\BronzeTrophy;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class TrophyType extends AbstractType
+class BronzeTrophyType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('color')
-            ->add('points')
+            ->add('award')
+            ->add('image')
+            ->add('user')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Trophy::class,
+            'data_class' => BronzeTrophy::class,
         ]);
     }
 }
