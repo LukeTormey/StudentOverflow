@@ -25,6 +25,16 @@
             text-align: center;
         }
     </style>
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+    Hello!
+    <strong>{{ app.user.username }}</strong>
+    you are logged in to StudentOverflow.
+    <br>
+    <a href="{{ url('app_logout') }}">logout</a>
+    {% else %}
+        <a href="{{ url('app_login') }}">login</a>
+    {% endif %}
+
 <h1>Welcome to Student Overflow.</h1>
     <div class="content">
         <h5><strong>The objective of this web application is to give the user a space to control, monitor and improve your study experience.</strong></h5>
