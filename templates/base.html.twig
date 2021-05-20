@@ -74,9 +74,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('home_cabinethub')}}">
-                        Cabinet Hub
-                    </a>
+                    <a class="nav-link" href="{{ url('home_cabinethub')}}">Cabinet Hub</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('home_calender_janruary')}}">
@@ -101,6 +99,15 @@
         </div>
 </nav>
 </div>
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+    Hello!
+    <strong>{{ app.user.username }}</strong>
+    you are logged in to StudentOverflow.
+    <br>
+    <a href="{{ url('app_logout') }}">logout</a>
+{% else %}
+    <a href="{{ url('app_login') }}">login</a>
+{% endif %}
 {% block body %}{% endblock %}
 <div class="footer" style="border: 2px solid #070c0a;">
     <p>Copyright © 2021 StudentOverflow.ie - All rights reserved.

@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\SubjectRepository;
 use App\Entity\Subject;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/", name="home_")
@@ -30,6 +31,7 @@ class DefaultController extends AbstractController
 
     /**
      * @Route("/study", name="study")
+     * @IsGranted("ROLE_USER", message="Access Denied: Make an account")
      */
     public function study(SubjectRepository $subjectRepository): Response
     {
@@ -45,6 +47,7 @@ class DefaultController extends AbstractController
 
     /**
      * @Route("/assignment", name="assignment")
+     * @IsGranted("ROLE_USER", message="Access Denied: Make an account")
      */
     public function assignment(AssignmentRepository $assignmentRepository): Response
     {
@@ -60,6 +63,7 @@ class DefaultController extends AbstractController
 
     /**
      * @Route("/calender_janruary", name="calender_janruary")
+     * @IsGranted("ROLE_USER", message="Access Denied: Make an account")
      */
     public function calender_janruary(): Response
     {
@@ -180,6 +184,7 @@ class DefaultController extends AbstractController
 
     /**
      * @Route("/cabinet", name="cabinet")
+     * @IsGranted("ROLE_USER", message="Access Denied: Make an account")
      */
     public function cabinet(GoldTrophyRepository $goldTrophyRepository, SilverTrophyRepository $silverTrophyRepository, BronzeTrophyRepository $bronzeTrophyRepository): Response
     {
@@ -199,6 +204,7 @@ class DefaultController extends AbstractController
 
     /**
      * @Route("/cabinethub", name="cabinethub")
+     * @IsGranted("ROLE_USER", message="Access Denied: Make an account")
      */
     public function alltrophies(GoldTrophyRepository $goldTrophyRepository, SilverTrophyRepository $silverTrophyRepository, BronzeTrophyRepository $bronzeTrophyRepository): Response
     {
