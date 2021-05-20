@@ -39,7 +39,7 @@ class SilverTrophyController extends AbstractController
             $entityManager->persist($silverTrophy);
             $entityManager->flush();
 
-            return $this->redirectToRoute('silver_trophy_index');
+            return $this->redirectToRoute('home_cabinet');
         }
 
         return $this->render('silver_trophy/new.html.twig', [

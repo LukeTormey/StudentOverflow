@@ -52,12 +52,18 @@ class User implements UserInterface
      */
     private $goldTrophies;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Subject::class, mappedBy="user")
+     */
+    private $subjects;
+
     public function __construct()
     {
         $this->trophies = new ArrayCollection();
         $this->bronzeTrophies = new ArrayCollection();
         $this->silverTrophies = new ArrayCollection();
         $this->goldTrophies = new ArrayCollection();
+        $this->subjects = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -236,5 +242,35 @@ class User implements UserInterface
     public function __toString(): string
     {
         return $this->email;
+    }
+
+    /**
+     * @return Collection|Subject[]
+     */
+    public function getSubjects(): Collection
+    {
+        return $this->subjects;
+    }
+
+    public function addSubject(Subject $subject): self
+    {
+        if (!$this->subjects->contains($subject)) {
+            $this->subjects[] = $subject;
+            $subject->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSubject(Subject $subject): self
+    {
+        if ($this->subjects->removeElement($subject)) {
+            // set the owning side to null (unless already changed)
+            if ($subject->getUser() === $this) {
+                $subject->setUser(null);
+            }
+        }
+
+        return $this;
     }
 }

@@ -99,10 +99,8 @@ class Trophy
         }
     }
 
-    public function addTrophy(Subject $subject, User $user){
-        //Difficulty should be an integer 1,2,3 or 4
-        $difficulty = $subject->getDifficulty();
-        switch ($difficulty){
+    public function addTrophy(Trophy $trophy, User $user){
+        switch ($trophy){
             case 1 :
                 $user->incrementBronzeTrophyTotal();
                 break;

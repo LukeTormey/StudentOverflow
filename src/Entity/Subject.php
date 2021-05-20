@@ -27,6 +27,11 @@ class Subject
      */
     private $difficulty;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="subjects")
+     */
+    private $user;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,5 +64,17 @@ class Subject
     public function __toString()
     {
         return $this->name;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
     }
 }

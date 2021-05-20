@@ -71,9 +71,12 @@ class DefaultController extends AbstractController
      */
     public function study(SubjectRepository $subjectRepository): Response
     {
+        $user = $this->getUser();
+        $subject = $subjectRepository->findByUser($user);
+
         $template = 'default/study.html.twig';
         $args = [
-            'subjects' => $subjectRepository->findAll()
+            'subject' => $subject
         ];
         return $this->render($template, $args);
     }
@@ -93,11 +96,30 @@ class DefaultController extends AbstractController
      */
     public function cabinet(GoldTrophyRepository $goldTrophyRepository, SilverTrophyRepository $silverTrophyRepository, BronzeTrophyRepository $bronzeTrophyRepository): Response
     {
+        $user = $this->getUser();
+        $goldtrophies = $goldTrophyRepository->findByUser($user);
+        $silvertrophies = $silverTrophyRepository->findByUser($user);
+        $bronzetrophies = $bronzeTrophyRepository->findByUser($user);
+
+        $template = 'default/cabinet.html.twig';
+        $args = [
+            'goldtrophies' => $goldtrophies,
+            'silvertrophies' => $silvertrophies,
+            'bronzetrophies' => $bronzetrophies
+        ];
+        return $this->render($template, $args);
+    }
+
+    /**
+     * @Route("/cabinethub", name="cabinethub")
+     */
+    public function alltrophies(GoldTrophyRepository $goldTrophyRepository, SilverTrophyRepository $silverTrophyRepository, BronzeTrophyRepository $bronzeTrophyRepository): Response
+    {
         $goldtrophies = $goldTrophyRepository->findAll();
         $silvertrophies = $silverTrophyRepository->findAll();
         $bronzetrophies = $bronzeTrophyRepository->findAll();
 
-        $template = 'default/cabinet.html.twig';
+        $template = 'default/cabinethub.html.twig';
         $args = [
             'goldtrophies' => $goldtrophies,
             'silvertrophies' => $silvertrophies,

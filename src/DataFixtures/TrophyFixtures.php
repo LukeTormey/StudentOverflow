@@ -2,7 +2,9 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Trophy;
+use App\Entity\BronzeTrophy;
+use App\Entity\SilverTrophy;
+use App\Entity\GoldTrophy;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
@@ -10,14 +12,17 @@ class TrophyFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-        $bronze = new Trophy();
-        $bronze->setColor('bronze');
+        $bronze = new BronzeTrophy();
+        $bronze->setAward('bronze');
+        $bronze->setImage('bronze.png');
 
-        $silver = new Trophy();
-        $silver->setColor('silver');
+        $silver = new SilverTrophy();
+        $silver->setAward('silver');
+        $silver->setImage('silver.png');
 
-        $gold = new Trophy();
-        $gold->setColor('gold');
+        $gold = new GoldTrophy();
+        $gold->setAward('gold');
+        $gold->setImage('gold.png');
 
         $manager->persist($bronze);
         $manager->persist($silver);

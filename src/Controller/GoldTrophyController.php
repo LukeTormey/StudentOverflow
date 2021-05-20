@@ -39,7 +39,7 @@ class GoldTrophyController extends AbstractController
             $entityManager->persist($goldTrophy);
             $entityManager->flush();
 
-            return $this->redirectToRoute('gold_trophy_index');
+            return $this->redirectToRoute('home_cabinet');
         }
 
         return $this->render('gold_trophy/new.html.twig', [

@@ -58,6 +58,7 @@
             <a class="nav-link" href="{{ url("home_home") }}">
                 Home
             </a>
+                    {% if is_granted('ROLE_USER') %}
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('subject_index')}}">
                         Subjects
@@ -67,6 +68,24 @@
                     <a class="nav-link" href="{{ url('home_study')}}">
                         Study
             </a>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('home_cabinet')}}">
+                        Trophy Cabinet
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('home_cabinethub')}}">
+                        Cabinet Hub
+                    </a>
+                </li>
+                {% endif %}
+                {% if is_granted('ROLE_ADMIN') %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('user_index')}}">
+                        Users
+                    </a>
+                </li>
+                {% endif %}
         </li>
             </ul>
         </div>

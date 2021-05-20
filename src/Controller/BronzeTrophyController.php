@@ -39,7 +39,7 @@ class BronzeTrophyController extends AbstractController
             $entityManager->persist($bronzeTrophy);
             $entityManager->flush();
 
-            return $this->redirectToRoute('bronze_trophy_index');
+            return $this->redirectToRoute('home_cabinet');
         }
 
         return $this->render('bronze_trophy/new.html.twig', [
