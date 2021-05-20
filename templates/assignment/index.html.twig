@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Assignment index{% endblock %}
+
+{% block body %}
+    <style>
+        h2 {
+            text-align: center;
+        }
+        body {
+            background-color: lightsalmon;
+        }
+    </style>
+    <h2>Please use this page to enter and manage your assignments.✍ <br></h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Subject</th>
+                <th>Deadline</th>
+                <th>Wordcount</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for assignment in assignments %}
+            <tr>
+                <td>{{ assignment.id }}</td>
+                <td>{{ assignment.subject }}</td>
+                <td>{{ assignment.deadline }}</td>
+                <td>{{ assignment.wordcount }}</td>
+                <td>
+                    <a href="{{ path('assignment_show', {'id': assignment.id}) }}">show</a>
+                    <a href="{{ path('assignment_edit', {'id': assignment.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('assignment_new') }}">Create new</a>
+{% endblock %}

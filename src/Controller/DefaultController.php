@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\AssignmentRepository;
 use App\Repository\BronzeTrophyRepository;
 use App\Repository\SilverTrophyRepository;
 use App\Repository\GoldTrophyRepository;
@@ -28,45 +29,6 @@ class DefaultController extends AbstractController
     }
 
     /**
-     * @Route("/timer", name="timer_default")
-     */
-    public function timerDefault(): Response
-    {
-        // default 10 mins
-        $n = 10;
-        $template = 'default/timer.html.twig';
-        $args = [
-            'timerDuration' => $n
-        ];
-        return $this->render($template, $args);
-    }
-
-    /**
-     * @Route("/timer/{n}/{id}", name="timer")
-     */
-    public function timer($n, Subject $subject): Response
-    {
-        $template = 'default/timer.html.twig';
-        $args = [
-            'timerDuration' => $n,
-            'subject' => $subject
-        ];
-        return $this->render($template, $args);
-    }
-
-    /**
-     * @Route("/create_trophy/{id}", name="create_trophy")
-     */
-    public function addTrophy(Subject $subject): Response
-    {
-        //create instance of Trophy2.php
-        $user = $this->getUser();
-
-
-        //redirect to trophy 
-    }
-
-    /**
      * @Route("/study", name="study")
      */
     public function study(SubjectRepository $subjectRepository): Response
@@ -82,11 +44,136 @@ class DefaultController extends AbstractController
     }
 
     /**
-     * @Route("/calender", name="calender")
+     * @Route("/assignment", name="assignment")
      */
-    public function calender(): Response
+    public function assignment(AssignmentRepository $assignmentRepository): Response
     {
-        $template = 'default/calender.html.twig';
+        $user = $this->getUser();
+        $assignment = $assignmentRepository->findByUser($user);
+
+        $template = 'assignment/assignment_index.html.twig';
+        $args = [
+            'assignment' => $assignment
+        ];
+        return $this->render($template, $args);
+    }
+
+    /**
+     * @Route("/calender_janruary", name="calender_janruary")
+     */
+    public function calender_janruary(): Response
+    {
+        $template = 'calender/calender_janruary.html.twig';
+        $args = [];
+        return $this->render($template, $args);
+    }
+
+    /**
+     * @Route("/calender_february", name="calender_february")
+     */
+    public function calender_february(): Response
+    {
+        $template = 'calender/calender_february.html.twig';
+        $args = [];
+        return $this->render($template, $args);
+    }
+
+    /**
+     * @Route("/calender_march", name="calender_march")
+     */
+    public function calender_march(): Response
+    {
+        $template = 'calender/calender_march.html.twig';
+        $args = [];
+        return $this->render($template, $args);
+    }
+
+    /**
+     * @Route("/calender_april", name="calender_april")
+     */
+    public function calender_april(): Response
+    {
+        $template = 'calender/calender_april.html.twig';
+        $args = [];
+        return $this->render($template, $args);
+    }
+
+    /**
+     * @Route("/calender_may", name="calender_may")
+     */
+    public function calender_may(): Response
+    {
+        $template = 'calender/calender_may.html.twig';
+        $args = [];
+        return $this->render($template, $args);
+    }
+
+    /**
+     * @Route("/calender_june", name="calender_june")
+     */
+    public function calender_june(): Response
+    {
+        $template = 'calender/calender_june.html.twig';
+        $args = [];
+        return $this->render($template, $args);
+    }
+
+    /**
+     * @Route("/calender_july", name="calender_july")
+     */
+    public function calender_july(): Response
+    {
+        $template = 'calender/calender_july.html.twig';
+        $args = [];
+        return $this->render($template, $args);
+    }
+
+    /**
+     * @Route("/calender_august", name="calender_august")
+     */
+    public function calender_august(): Response
+    {
+        $template = 'calender/calender_august.html.twig';
+        $args = [];
+        return $this->render($template, $args);
+    }
+
+    /**
+     * @Route("/calender_september", name="calender_september")
+     */
+    public function calender_september(): Response
+    {
+        $template = 'calender/calender_september.html.twig';
+        $args = [];
+        return $this->render($template, $args);
+    }
+
+    /**
+     * @Route("/calender_october", name="calender_october")
+     */
+    public function calender_october(): Response
+    {
+        $template = 'calender/calender_october.html.twig';
+        $args = [];
+        return $this->render($template, $args);
+    }
+
+    /**
+     * @Route("/calender_november", name="calender_november")
+     */
+    public function calender_november(): Response
+    {
+        $template = 'calender/calender_november.html.twig';
+        $args = [];
+        return $this->render($template, $args);
+    }
+
+    /**
+     * @Route("/calender_december", name="calender_december")
+     */
+    public function calender_december(): Response
+    {
+        $template = 'calender/calender_december.html.twig';
         $args = [];
         return $this->render($template, $args);
     }

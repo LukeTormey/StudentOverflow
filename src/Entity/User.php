@@ -57,6 +57,11 @@ class User implements UserInterface
      */
     private $subjects;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Assignment::class, mappedBy="user")
+     */
+    private $assignments;
+
     public function __construct()
     {
         $this->trophies = new ArrayCollection();
@@ -64,6 +69,7 @@ class User implements UserInterface
         $this->silverTrophies = new ArrayCollection();
         $this->goldTrophies = new ArrayCollection();
         $this->subjects = new ArrayCollection();
+        $this->assignments = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -268,6 +274,36 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($subject->getUser() === $this) {
                 $subject->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Assignment[]
+     */
+    public function getAssignments(): Collection
+    {
+        return $this->assignments;
+    }
+
+    public function addAssignment(Assignment $assignment): self
+    {
+        if (!$this->assignments->contains($assignment)) {
+            $this->assignments[] = $assignment;
+            $assignment->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAssignment(Assignment $assignment): self
+    {
+        if ($this->assignments->removeElement($assignment)) {
+            // set the owning side to null (unless already changed)
+            if ($assignment->getUser() === $this) {
+                $assignment->setUser(null);
             }
         }
 
